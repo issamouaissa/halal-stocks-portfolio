@@ -1,0 +1,13 @@
+<app-navaccueil></app-navaccueil>
+
+<div class="container">
+  <div class="chart-container">
+    <iframe *ngIf="tradingViewUrl" [src]="tradingViewUrl"
+            frameborder="0"
+            allowtransparency="true"
+            scrolling="no"
+            class="chart-frame">
+    </iframe>
+  </div>
+  <router-outlet></router-outlet>
+</div>

@@ -1,0 +1,97 @@
+<app-navaccueil></app-navaccueil>
+<div class="container">
+  <div *ngIf="!errorMessage; else noData" class="card shadow-sm">
+    <div class="card-body">
+      <div class="d-flex align-items-center">
+        <img *ngIf="companyLogoUrl" [src]="companyLogoUrl" alt="Company Logo" class="stock-image" width="120" height="120">
+        <div class="ml-4">
+          <h1 class="card-title">{{ stockData?.name }} <small class="text-muted">{{ stockData?.symbol }}</small></h1>
+          <div class="badge-container">
+            <span class="badge badge-light">{{ stockData?.exchange }}</span>
+            <span class="badge badge-light">Market Cap: {{ stockData?.marketCap | number:'1.0-0' }}</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="price-info mt-4">
+        <h2 class="price">${{ stockData?.price | number:'1.2-2' }}</h2>
+        <p class="change-text">
+          <i class="fas" [ngClass]="{'fa-arrow-up': stockData?.change > 0, 'fa-arrow-down': stockData?.change < 0}"></i>
+          {{ stockData?.change | number:'1.2-2' }} ({{ stockData?.changesPercentage | number:'1.2-2' }}%)
+        </p>
+        <p class="last-updated">Last Updated: {{ stockData?.earningsAnnouncement | date:'MMM d, y, h:mm a' }}</p>
+      </div>
+
+      <ul class="nav nav-tabs mt-4">
+        <li class="nav-item">
+          <a class="nav-link"
+             [routerLink]="['/overview', stockData?.symbol, 'details']"
+             [class.active]="activeTab === 'details'"
+             (click)="setActiveTab('details')">Details</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link"
+             [routerLink]="['/overview', stockData?.symbol, 'compliance']"
+             [class.active]="activeTab === 'compliance'"
+             (click)="setActiveTab('compliance')">Shariah Compliance Report</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link"
+             [routerLink]="['/overview', stockData?.symbol, 'news']"
+             [class.active]="activeTab === 'news'"
+             (click)="setActiveTab('news')">News</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link"
+             [routerLink]="['/overview', stockData?.symbol, 'profile']"
+             [class.active]="activeTab === 'profile'"
+             (click)="setActiveTab('profile')">Profile</a>
+        </li>
+      </ul>
+      <router-outlet></router-outlet>
+
+      <!-- Success message -->
+      <div *ngIf="successMessage" class="alert alert-success mt-4">
+        {{ successMessage }}
+      </div>
+    </div>
+  </div>
+
+  <!-- Template pour les données non disponibles -->
+  <ng-template #noData>
+    <div class="card shadow-sm">
+      <div class="card-body text-center">
+        <h3 class="no-data-title">Data Not Available</h3>
+        <p class="no-data-text">It seems that the stock symbol you're looking for does not exist or data is unavailable.</p>
+      </div>
+    </div>
+  </ng-template>
+</div>
+
+<div class="home-container">
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-section about">
+        <p>Taking the guesswork out of Halal Investing</p>
+        <div class="social-links">
+          <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+          <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+          <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+          <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+        </div>
+      </div>
+      <div class="footer-section links" *ngFor="let section of footerSections">
+        <h3>{{ section.title }}</h3>
+        <ul>
+          <li *ngFor="let link of section.links">
+            <a [href]="link.url">{{ link.name }}</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-note">
+      <p>The testimonials, statements, and opinions presented on the website are applicable to the specific individuals. It is important to note that individual circumstances may vary, and may not be representative of the experience of others. There are no guarantees of future performance or success. The testimonials are voluntarily provided and are not paid, nor were they provided with free products, services or any other benefit in exchange for said statements.</p>
+      <p>© 2024 Investroo Inc. d.b.a. Halal Stocks. All rights reserved.</p>
+    </div>
+  </footer>
+</div>

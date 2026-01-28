@@ -1,0 +1,95 @@
+<div class="home-container">
+  <app-navbar></app-navbar>
+  <header class="header">
+    <div class="header-content">
+      <h1>{{ mainHeading }} <span class="highlight-text">Halal Investing</span></h1>
+      <h2 *ngIf="subHeading">{{ subHeading }}</h2>
+      <p>{{ description }}</p>
+      <div class="search-container">
+        <form class="d-flex align-items-center">
+          <input [(ngModel)]="searchQuery" name="search" placeholder="Search Stocks & ETFs" class="form-control search-bar" />
+          <button class="btn search-btn" type="button" (click)="onSearch()">Search</button>
+        </form>
+      </div>
+    </div>
+    <div class="header-image">
+      <img [src]="imageUrl" [alt]="altImg">
+    </div>
+  </header>
+
+  <section class="image-gallery" *ngIf="imageRows.length > 0">
+    <div class="gallery-header">
+      <h2>{{ galleryTitle }}</h2>
+      <p>{{ galleryDescription }}</p>
+    </div>
+    <div class="image-row" *ngFor="let row of imageRows">
+      <div class="image-item" *ngFor="let item of row">
+        <img [src]="item.src" [alt]="item.alt">
+        <h3>{{ item.title }}</h3>
+        <p>{{ item.description }}</p>
+      </div>
+    </div>
+  </section>
+</div>
+
+
+
+
+
+
+<div class="testimonials-section">
+  <div class="testimonials-header">
+    <h2>{{ headerTitle }}</h2>
+    <p>{{ headerDescription }}</p>
+  </div>
+
+
+  <div class="testimonials-container">
+    <div *ngFor="let testimonial of testimonials" class="testimonial-card">
+      <div class="rating">
+        <span *ngFor="let star of [1, 2, 3, 4, 5]">
+          <i class="fa" [ngClass]="{'fa-star': star <= testimonial.rating, 'fa-star-o': star > testimonial.rating}"></i>
+        </span>
+      </div>
+      <p class="review">{{testimonial.review}}</p>
+      <div class="author">{{testimonial.author}}</div>
+      <div class="source" *ngIf="testimonial.source">{{testimonial.source}}</div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+<div class="home-container">
+
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-section about">
+<!--        <img src="https://cdn.prod.website-files.com/6401578edcad599a8823c1be/640166737270578dd265961a_zoya-green.png" alt="Logo" class="footer-logo">-->
+        <p>Taking the guesswork out of Halal Investing</p>
+        <div class="social-links">
+          <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+          <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+          <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+          <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+        </div>
+      </div>
+      <div class="footer-section links" *ngFor="let section of footerSections">
+        <h3>{{ section.title }}</h3>
+        <ul>
+          <li *ngFor="let link of section.links">
+            <a [href]="link.url">{{ link.name }}</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-note">
+      <p>The testimonials, statements, and opinions presented on the website are applicable to the specific individuals. It is important to note that individual circumstances may vary, and may not be representative of the experience of others. There are no guarantees of future performance or success. The testimonials are voluntarily provided and are not paid, nor were they provided with free products, services or any other benefit in exchange for said statements.</p>
+      <p>© 2024 Investroo Inc. d.b.a. Halal Stocks. All rights reserved.</p>
+    </div>
+  </footer>
+</div>

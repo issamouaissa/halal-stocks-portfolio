@@ -1,0 +1,120 @@
+<app-navaccueil></app-navaccueil>
+
+<div class="page-header">
+  <h1>ETF & Stock Screener</h1>
+</div>
+
+<div class="content-container">
+  <div class="grid-container">
+    <section class="companies-section">
+      <!-- Button Group -->
+      <div class="button-group">
+        <button class="filter-button" [ngClass]="{'selected': selectedFilter === 'mostActive'}" (click)="filter('mostActive')">Most Active</button>
+        <button class="filter-button" [ngClass]="{'selected': selectedFilter === 'mostPopular'}" (click)="filter('mostPopular')">Most Popular</button>
+        <button class="filter-button" [ngClass]="{'selected': selectedFilter === 'topGainers'}" (click)="filter('topGainers')">Top Gainers</button>
+        <button class="filter-button" [ngClass]="{'selected': selectedFilter === 'topLosers'}" (click)="filter('topLosers')">Top Losers</button>
+      </div>
+
+
+      <div class="table-container">
+        <div class="table-responsive">
+          <table class="styled-table">
+            <thead>
+            <tr>
+              <th>Name</th>
+              <th>Price</th>
+              <th>Change</th>
+              <th>Compliance</th> <!-- New column -->
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let company of companies">
+              <td class="company-cell">
+                <img [src]="company.image" alt="{{ company.symbol }}" class="company-logo" />
+                <div class="company-details">
+                  <span class="company-name">{{ company.name }}</span>
+                  <span class="company-symbol">{{ company.symbol }}</span>
+                </div>
+              </td>
+              <td class="price">{{ company.price | currency:'USD':'symbol':'1.2-2' }}</td>
+              <td class="change-column">
+      <span [ngClass]="{'change-positive': company.change > 0, 'change-negative': company.change < 0}">
+        <i class="fas" [ngClass]="{'fa-arrow-up': company.change > 0, 'fa-arrow-down': company.change < 0}"></i>
+        {{ company.change || 'N/A'}}%
+      </span>
+              </td>
+              <td class="compliance-cell">
+      <span [ngClass]="{
+        'compliance-halal': company.complianceStatus === 'Halal',
+        'compliance-not-halal': company.complianceStatus === 'Not Halal',
+        'compliance-doubtful': company.complianceStatus === 'Doubtful'
+      }" class="compliance-status">
+        {{ company.complianceStatus || 'N/A' }}
+      </span>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+          <button (click)="loadMore()">Load More</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section des Actualités -->
+    <div class="news-container">
+      <h2>Dernières Nouvelles</h2>
+      <ul class="news-list">
+        <li *ngFor="let article of news">
+          <a [href]="article.url" target="_blank" class="news-item">
+            <div class="news-image">
+              <img [src]="article.image" alt="{{ article.title }}" />
+            </div>
+            <div class="news-content">
+              <h3>{{ article.title }}</h3>
+              <p>{{ article.description }}</p>
+              <small>{{ article.publishedDate | date:'short' }}</small>
+            </div>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+<div class="home-container">
+
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-section about">
+        <!--        <img src="https://cdn.prod.website-files.com/6401578edcad599a8823c1be/640166737270578dd265961a_zoya-green.png" alt="Logo" class="footer-logo">-->
+        <p>Taking the guesswork out of Halal Investing</p>
+        <div class="social-links">
+          <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+          <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+          <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+          <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+        </div>
+      </div>
+      <div class="footer-section links" *ngFor="let section of footerSections">
+        <h3>{{ section.title }}</h3>
+        <ul>
+          <li *ngFor="let link of section.links">
+            <a [href]="link.url">{{ link.name }}</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-note">
+      <p>The testimonials, statements, and opinions presented on the website are applicable to the specific individuals. It is important to note that individual circumstances may vary, and may not be representative of the experience of others. There are no guarantees of future performance or success. The testimonials are voluntarily provided and are not paid, nor were they provided with free products, services or any other benefit in exchange for said statements.</p>
+      <p>© 2024 Investroo Inc. d.b.a. Halal Stocks. All rights reserved.</p>
+    </div>
+  </footer>
+</div>

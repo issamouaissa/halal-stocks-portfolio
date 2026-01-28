@@ -1,0 +1,23 @@
+<app-navaccueil></app-navaccueil>
+
+<div class="container">
+  <div class="profile-header text-center">
+    <h1 class="company-name">{{ companyProfile.companyName }}</h1>
+    <p class="company-tagline">{{ companyProfile.tagline }}</p>
+  </div>
+
+  <div class="profile-details mt-5">
+    <div class="row">
+      <div class="col-md-6">
+        <p><strong>Sector:</strong> {{ companyProfile.sector }}</p>
+        <p><strong>Industry:</strong> {{ companyProfile.industry }}</p>
+        <p><strong>Description:</strong> {{ companyProfile.description }}</p>
+      </div>
+      <div class="col-md-6">
+        <p><strong>Website:</strong> <a [href]="companyProfile.website" target="_blank" class="profile-link">{{ companyProfile.website }}</a></p>
+        <p><strong>Phone:</strong> {{ companyProfile.phone }}</p>
+        <p><strong>Address:</strong> {{ companyProfile.address }}, {{ companyProfile.city }}, {{ companyProfile.state }} {{ companyProfile.zip }}</p>
+      </div>
+    </div>
+  </div>
+</div>

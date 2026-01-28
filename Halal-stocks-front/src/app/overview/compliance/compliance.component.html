@@ -1,0 +1,17 @@
+<app-navaccueil></app-navaccueil>
+
+<div class="compliance-container">
+  <h1 class="compliance-title">Shariah Compliance</h1>
+
+  <div class="status-card">
+    <h2 class="status-header">Statut :
+      <span [ngClass]="{
+        'halal': complianceStatus?.status === 'Halal',
+        'not-halal': complianceStatus?.status === 'Not Halal',
+        'doubtful': complianceStatus?.status === 'Doubtful'
+      }">
+        {{ complianceStatus?.status }}
+      </span>
+    </h2>
+  </div>
+</div>

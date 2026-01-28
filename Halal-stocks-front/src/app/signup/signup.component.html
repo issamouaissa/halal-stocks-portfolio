@@ -1,0 +1,108 @@
+<!--<div class="container mt-4" >
+  <div class="card">
+    <h1>Client Registation</h1>
+    <form>
+      <div class="form-group">
+        <label>Name</label>
+        <input type="text" [(ngModel)]="clientname" [ngModelOptions]="{standalone: true}"  class="form-control" id="name" class="form-control" placeholder="Enter Name">
+      </div>
+
+      <div class="form-group">
+        <label>Email</label>
+        <input type="email" [(ngModel)]="email" [ngModelOptions]="{standalone: true}" class="form-control" id="email"  placeholder="Enter Email">
+      </div>
+
+      <div class="form-group">
+        <label>Password</label>
+        <input type="password" [(ngModel)]="password" [ngModelOptions]="{standalone: true}" class="form-control" id="password" class="form-control" placeholder="Enter Password">
+      </div>
+
+      <button type="submit" class="btn btn-primary" (click)="save()">Sign up</button>
+
+
+    </form>
+  </div>
+
+</div>-->
+
+
+
+
+<div class="signup-container">
+  <div class="signup-form">
+    <h2>Create an Account</h2>
+    <form #signupForm="ngForm" (ngSubmit)="save(signupForm)" novalidate>
+      <div class="form-group">
+        <label for="clientname">Name</label>
+        <input
+          type="text"
+          id="clientname"
+          [(ngModel)]="clientname"
+          name="clientname"
+          [ngModelOptions]="{standalone: true}"
+          class="form-control"
+          placeholder="Enter Name"
+          required
+        />
+        <div *ngIf="signupForm.submitted && !clientname" class="error-message">
+          Name is required
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input
+          type="email"
+          id="email"
+          [(ngModel)]="email"
+          name="email"
+          [ngModelOptions]="{standalone: true}"
+          class="form-control"
+          placeholder="Enter Email"
+          required
+        />
+        <div *ngIf="signupForm.submitted && !email" class="error-message">
+          Email is required
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input
+          type="password"
+          id="password"
+          [(ngModel)]="password"
+          name="password"
+          [ngModelOptions]="{standalone: true}"
+          class="form-control"
+          placeholder="Enter Password"
+          required
+        />
+        <div *ngIf="signupForm.submitted && !password" class="error-message">
+          Password is required
+        </div>
+      </div>
+
+      <div *ngIf="errorMessage" class="error-message">
+        {{ errorMessage }}
+      </div>
+
+      <button type="submit" class="btn btn-primary" [disabled]="isSubmitting">
+        Sign Up
+        <div *ngIf="isSubmitting" class="loading-spinner"></div>
+      </button>
+
+      <button type="button" class="btn btn-google" (click)="googleLogin()">
+        <img src="https://screener.musaffa.com/assets/images/google.svg" alt="Google Logo"> Continue with Google
+      </button>
+
+      <div class="login-redirect">
+        <p>Already have an account? <a routerLink="/login">Log in here</a></p>
+      </div>
+    </form>
+  </div>
+</div>
+
+
+
+

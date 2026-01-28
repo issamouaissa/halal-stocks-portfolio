@@ -1,0 +1,266 @@
+.page-header {
+  text-align: center;
+  margin-top: 100px; /* Space between header and table */
+}
+
+.page-header h1 {
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: #333;
+  text-align: center;
+  margin-bottom: 40px;
+  position: relative;
+}
+.page-header h1::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 3px;
+  background: #03fc9d;
+  position: absolute;
+  left: 50%;
+  bottom: -1px;
+  transform: translateX(-50%);
+}
+
+/* Container Styling */
+.table-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 40px;
+  background-color: #f2f4f7;
+  margin-bottom: 1px;
+}
+
+/* General Table Styling */
+.styled-table {
+  width: 100%;
+  max-width: 1500px;
+  border-collapse: separate; /* Change to separate for spacing */
+  border-spacing: 0 15px; /* Space between rows */
+  font-family: 'Roboto', sans-serif;
+  margin: 0 auto;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+th, td {
+  padding: 15px 25px;
+  border-bottom: 1px solid #e0e0e0;
+  text-align: left;
+  vertical-align: middle;
+}
+
+th {
+  background-color: #003b2f; /* Darker professional blue */
+  color: #03fc9d;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: 14px;
+}
+
+td {
+  background-color: #ffffff;
+  padding-right: 30px; /* Add extra padding on the right side of each cell */
+}
+
+tr {
+  transition: background-color 0.2s ease;
+}
+
+tr:hover {
+  background-color: #f5f5f5;
+}
+
+/* Company Column */
+.company-cell {
+  display: flex;
+  align-items: center;
+}
+
+.company-logo {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  margin-right: 15px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.company-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.company-name {
+  font-size: 16px;
+  font-weight: 600;
+  color: #2c3e50;
+}
+
+.company-symbol {
+  font-size: 14px;
+  color: #7f8c8d;
+}
+
+/* Number Styling */
+.price, .bold-number {
+  font-weight: bold;
+  color: #34495e;
+}
+
+.market-cap {
+  font-weight: bold;
+  color: #34495e;
+}
+
+
+.change-positive {
+  color: #28a745; /* Success green */
+  font-weight: bold;
+}
+
+.change-negative {
+  color: #dc3545; /* Danger red */
+  font-weight: bold;
+}
+
+.bold-number {
+  font-weight: 600;
+  font-size: 14px; /* Adjust font size for consistency */
+}
+
+
+/* Load More Button */
+button {
+  display: block;
+  margin: 30px auto;
+  padding: 12px 30px;
+  font-size: 16px;
+  font-weight: 600;
+  background-color: #03fc9d;
+  color: #2e2f2e;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  background-color: #2e2f2e;
+  color: #03fc9d;
+}
+
+
+.compliance-status {
+  font-weight: bold;
+  font-size: 17px;
+}
+
+.compliance-halal {
+  color: #28a745; /* Green for Halal */
+}
+
+.compliance-not-halal {
+  color: #dc3545; /* Red for Not Halal */
+}
+
+.compliance-doubtful {
+  color: #f39c12; /* Yellow for Doubtful */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+.footer {
+  background-color: #1a1a1a;
+  color: #ffffff;
+  padding: 40px 20px;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-section {
+  flex: 1;
+  margin: 10px;
+  min-width: 200px;
+}
+
+.footer-logo {
+  max-width: 150px;
+  margin-bottom: 20px;
+}
+
+.footer-section h3 {
+  font-size: 1.2em;
+  margin-bottom: 10px;
+}
+
+.footer-section p {
+  font-size: 0.9em;
+  line-height: 1.6;
+}
+
+.footer-section ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.footer-section li {
+  margin-bottom: 10px;
+}
+
+.footer-section a {
+  color: #03fc9d;
+  text-decoration: none;
+}
+
+.footer-section a:hover {
+  text-decoration: underline;
+}
+
+.social-links {
+  margin-top: 20px;
+}
+
+.social-links a {
+  color: #03fc9d;
+  font-size: 1.5em;
+  margin-right: 15px;
+}
+
+.social-links a:hover {
+  color: #ffffff;
+}
+
+.footer-note {
+  text-align: center;
+  margin-top: 30px;
+  font-size: 0.8em;
+  color: #aaaaaa;
+  border-top: 1px solid #333333;
+  padding-top: 20px;
+}
+
+
+
+
+

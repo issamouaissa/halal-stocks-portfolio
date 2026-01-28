@@ -1,0 +1,63 @@
+.compliance-container {
+  max-width: 600px; /* Reduced width for a more compact look */
+  margin: 30px auto;
+  padding: 30px;
+  background-color: #ffffff; /* White background for contrast */
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15); /* Deeper shadow for a more pronounced effect */
+  text-align: center; /* Center text for better alignment */
+}
+
+.compliance-title {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #333;
+  text-align: center;
+  margin-bottom: 40px;
+  position: relative;
+}
+
+.compliance-title::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 3px;
+  background: #03fc9d;
+  position: absolute;
+  left: 50%;
+  bottom: -8px;
+  transform: translateX(-50%);
+}
+
+.status-card {
+  background-color: #f1f1f1; /* Light grey background for the card */
+  padding: 25px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  transition: background-color 0.3s; /* Smooth transition for hover effect */
+
+  &:hover {
+    background-color: #e0e0e0; /* Slightly darker on hover */
+  }
+}
+
+.status-header {
+  font-size: 1.8rem; /* Increased font size for status */
+  margin: 0;
+  font-weight: 600; /* Bolder text for emphasis */
+}
+
+.halal {
+  color: #4caf50; /* Green for Halal */
+  font-weight: bold;
+}
+
+.not-halal {
+  color: #f44336; /* Red for Not Halal */
+  font-weight: bold;
+}
+
+.doubtful {
+  color: #ffeb3b; /* Yellow for Doubtful */
+  font-weight: bold;
+}

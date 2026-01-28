@@ -1,0 +1,24 @@
+<app-navaccueil></app-navaccueil>
+
+<div class="news-container">
+  <h3 class="section-title">Company News</h3>
+
+  <div class="news-grid">
+    <!-- Loop through the news array -->
+    <div class="news-card" *ngFor="let news of CompanyNews">
+      <div class="news-image-container">
+        <img [src]="news.image" class="news-image" alt="News image">
+      </div>
+      <div class="news-body">
+        <h5 class="news-title">{{ news.title }}</h5>
+        <p class="news-summary">{{ news.summary }}</p>
+        <a [href]="news.url" target="_blank" class="news-link">Read more</a>
+      </div>
+      <div class="news-footer">
+        <span class="news-site">{{ news.site }}</span> |
+        <span class="news-date">{{ news.publishedDate | date: 'medium' }}</span>
+      </div>
+    </div>
+  </div>
+  <router-outlet></router-outlet>
+</div>

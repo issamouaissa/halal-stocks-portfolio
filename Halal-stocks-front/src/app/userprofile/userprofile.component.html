@@ -1,0 +1,168 @@
+<app-navaccueil></app-navaccueil>
+
+<div class="contact-container">
+  <div class="sidebar">
+    <div class="profile">
+      <h3>{{ client?.clientname }}</h3>
+      <button class="upgrade-btn">Upgrade to Premium</button>
+    </div>
+    <nav class="menu">
+      <a routerLink="/userprofile" class="menu-item">
+        <i class="fas fa-user"></i> Profile Details
+      </a>
+      <a routerLink="/userprofile" class="menu-item">
+        <i class="fas fa-key"></i> Reset password
+      </a>
+      <a routerLink="/support" class="menu-item">
+        <i class="fas fa-envelope"></i> Get in touch
+      </a>
+      <a class="menu-item1" (click)="openLogoutModal(logoutModal)">
+        <i class="fas fa-sign-out-alt"></i> Log out
+      </a>
+    </nav>
+  </div>
+
+
+
+<div class="container">
+  <h1 class="page-title">Profile Details</h1>
+
+  <div *ngIf="client" class="profile-card">
+    <div class="profile-header">
+      <h3>{{ client.clientname }}</h3>
+      <button class="edit-button" (click)="toggleEditMode()">Edit</button>
+    </div>
+
+    <form *ngIf="isEditing" (ngSubmit)="updateClient()" class="profile-form">
+      <div class="form-group">
+        <label for="clientName">Client Name :</label>
+        <input type="text" id="clientName" [(ngModel)]="client.clientname" name="clientname" required>
+      </div>
+      <div class="form-group">
+        <label for="email">Email :</label>
+        <input type="email" id="email" [(ngModel)]="client.email" name="email" required>
+      </div>
+      <!-- Add more fields as necessary -->
+      <div class="form-actions">
+        <button type="submit" class="btn btn-primary">Save</button>
+        <button type="button" class="btn btn-secondary" (click)="toggleEditMode()">Cancel</button>
+      </div>
+      <div *ngIf="successMessage" class="alert-message alert-success">
+        <i class="fas fa-check-circle alert-icon"></i>
+        {{ successMessage }}
+      </div>
+
+      <!-- Message d'erreur -->
+      <div *ngIf="errorMessage" class="alert-message alert-error">
+        <i class="fas fa-times-circle alert-icon"></i>
+        {{ errorMessage }}
+      </div>
+    </form>
+
+    <div *ngIf="!isEditing">
+      <p><strong>Client Name :</strong> {{ client.clientname }}</p>
+      <p><strong>Email :</strong> {{ client.email }}</p>
+      <!-- Add more fields as necessary -->
+    </div>
+
+    <!-- Reset Password Form -->
+    <div class="reset-password-section">
+      <h3>Reset Password</h3>
+      <form [formGroup]="resetForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label for="currentPassword">Current Password:</label>
+          <input type="password" id="currentPassword" formControlName="currentPassword" class="form-control" />
+        </div>
+        <div class="form-group">
+          <label for="newPassword">New Password:</label>
+          <input type="password" id="newPassword" formControlName="newPassword" class="form-control" />
+        </div>
+        <div class="form-group">
+          <label for="confirmPassword">Confirm New Password:</label>
+          <input type="password" id="confirmPassword" formControlName="confirmPassword" class="form-control" />
+        </div>
+        <button type="submit" class="btn btn-primary">Reset Password</button>
+      </form>
+      <div *ngIf="successMessage" class="alert-message alert-success">
+        <i class="fas fa-check-circle alert-icon"></i>
+        {{ successMessage }}
+      </div>
+
+      <!-- Message d'erreur -->
+      <div *ngIf="errorMessage" class="alert-message alert-error">
+        <i class="fas fa-times-circle alert-icon"></i>
+        {{ errorMessage }}
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="!client && !error" class="loading">
+    <p>Loading...</p>
+  </div>
+
+  <div *ngIf="error" class="error-message">
+    <p>{{ error }}</p>
+  </div>
+</div>
+</div>
+
+  <!-- Logout Confirmation Modal -->
+  <ng-template #logoutModal let-modal>
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Confirm Logout</h4>
+          <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>Do you wish to log out?</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" (click)="modal.dismiss('No')">No</button>
+          <button type="button" class="btn btn-danger" (click)="logout()">Yes</button>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+
+
+
+
+
+
+
+
+
+
+<div class="home-container">
+
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-section about">
+        <!--        <img src="https://cdn.prod.website-files.com/6401578edcad599a8823c1be/640166737270578dd265961a_zoya-green.png" alt="Logo" class="footer-logo">-->
+        <p>Taking the guesswork out of Halal Investing</p>
+        <div class="social-links">
+          <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+          <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+          <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+          <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+        </div>
+      </div>
+      <div class="footer-section links" *ngFor="let section of footerSections">
+        <h3>{{ section.title }}</h3>
+        <ul>
+          <li *ngFor="let link of section.links">
+            <a [href]="link.url">{{ link.name }}</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-note">
+      <p>The testimonials, statements, and opinions presented on the website are applicable to the specific individuals. It is important to note that individual circumstances may vary, and may not be representative of the experience of others. There are no guarantees of future performance or success. The testimonials are voluntarily provided and are not paid, nor were they provided with free products, services or any other benefit in exchange for said statements.</p>
+      <p>© 2024 Investroo Inc. d.b.a. Halal Stocks. All rights reserved.</p>
+    </div>
+  </footer>
+</div>
+

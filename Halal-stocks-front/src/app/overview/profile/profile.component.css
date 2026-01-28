@@ -1,0 +1,51 @@
+/* Container */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Profile Header */
+.profile-header {
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+.company-name {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #333;
+}
+
+.company-tagline {
+  font-size: 1.2rem;
+  color: #6c757d;
+  margin-top: 10px;
+}
+
+/* Profile Details */
+.profile-details {
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.profile-details p {
+  font-size: 1rem;
+  color: #495057;
+  line-height: 1.6;
+}
+
+.profile-details strong {
+  color: #333;
+}
+
+.profile-link {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.profile-link:hover {
+  text-decoration: underline;
+}

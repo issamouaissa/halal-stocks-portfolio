@@ -1,0 +1,358 @@
+/* General Layout */
+.content-container {
+  padding: 40px;
+  background-color: #f8f9fa;
+}
+
+.page-header {
+  text-align: center;
+  margin-top: 100px; /* Space between header and table */
+}
+
+.page-header h1 {
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: #333;
+  text-align: center;
+  margin-bottom: 40px;
+  position: relative;
+}
+.page-header h1::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 3px;
+  background: #03fc9d;
+  position: absolute;
+  left: 50%;
+  bottom: -1px;
+  transform: translateX(-50%);
+}
+
+/* Grid Container */
+.grid-container {
+  display: grid;
+  grid-template-columns: 70% 30%;
+  gap: 20px;
+}
+
+/* Table Section */
+.companies-section {
+  margin-bottom: 40px;
+}
+
+.table-container {
+  max-width: 100%;
+  margin-bottom: 1px;
+}
+
+.styled-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+}
+
+thead {
+  background-color: #003b2f;
+  color: #03fc9d;
+}
+
+th, td {
+  padding: 12px;
+  text-align: left;
+}
+
+th {
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 14px;
+}
+
+td {
+  border-bottom: 1px solid #dee2e6;
+}
+
+
+.company-cell {
+  display: flex;
+  align-items: center;
+}
+
+.company-logo {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 15px;
+}
+
+.company-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.company-name {
+  font-size: 16px;
+  font-weight: 600;
+  color: #343a40;
+}
+
+.company-symbol {
+  font-size: 14px;
+  color: #868e96;
+}
+
+.price, .bold-number {
+  font-weight: 600;
+  color: #495057;
+}
+
+.change-positive {
+  color: #28a745;
+  font-weight: bold;
+}
+
+.change-negative {
+  color: #dc3545;
+  font-weight: bold;
+}
+
+button {
+  display: block;
+  width: 100%;
+  max-width: 200px;
+  margin: 20px auto;
+  padding: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  background-color: #003b2f;
+  color: #03fc9d;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: rgba(0, 59, 47, 0.89);
+  color: white;
+}
+
+/* News Section */
+.news-container {
+  margin-top: 1px;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.news-container h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.news-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.news-item {
+  display: flex;
+  align-items: flex-start;
+  text-decoration: none;
+  color: #333;
+  margin-bottom: 20px;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #ffffff;
+  transition: box-shadow 0.2s, background-color 0.2s;
+}
+
+.news-item:hover {
+  background-color: #f0f0f0;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.news-image img {
+  width: 100px; /* Ajustez selon vos besoins */
+  height: 75px; /* Ajustez selon vos besoins */
+  object-fit: cover;
+  border-radius: 4px;
+  margin-right: 15px;
+}
+
+.news-content {
+  flex: 1;
+}
+
+.news-content h3 {
+  font-size: 1rem;
+  font-weight: 500;
+  margin: 0;
+  color: #2e2f2e;
+}
+
+.news-content p {
+  margin: 4px 0;
+  color: #555;
+}
+
+.news-content small {
+  color: #888;
+}
+
+
+
+/* Button Group */
+.button-group {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 20px;
+}
+
+/* Style des boutons de filtrage */
+.filter-button {
+  padding: 10px 20px;
+  font-size: 15px;
+  font-weight: 600;
+  background-color: #ffffff; /* Couleur de fond par défaut */
+  color: #333333; /* Couleur du texte par défaut */
+  border: 1px solid #cccccc; /* Bordure subtile pour le bouton */
+  border-radius: 25px; /* Coins arrondis */
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+  text-transform: uppercase; /* Met les lettres en majuscules */
+}
+
+
+.filter-button.selected{
+  background-color: #03fc9d; /* Couleur de fond au survol */
+  color: black; /* Couleur du texte au survol */
+  border: 4px solid white; /* Bordure assortie au survol */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Ombre portée douce */
+}
+
+.filter-button:not(.selected):hover{
+  background-color: black; /* Couleur de fond pour le bouton sélectionné */
+  color: #03fc9d; /* Couleur du texte pour le bouton sélectionné */
+  border: 4px solid white; /* Bordure assortie pour le bouton sélectionné */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.filter-button:focus {
+  outline: none;
+}
+
+
+.compliance-status {
+  font-weight: bold;
+  font-size: 17px;
+}
+
+.compliance-halal {
+  color: #28a745; /* Green for Halal */
+}
+
+.compliance-not-halal {
+  color: #dc3545; /* Red for Not Halal */
+}
+
+.compliance-doubtful {
+  color: #f39c12; /* Yellow for Doubtful */
+}
+
+
+
+
+
+
+
+
+
+
+.footer {
+  background-color: #1a1a1a;
+  color: #ffffff;
+  padding: 40px 20px;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-section {
+  flex: 1;
+  margin: 10px;
+  min-width: 200px;
+}
+
+.footer-logo {
+  max-width: 150px;
+  margin-bottom: 20px;
+}
+
+.footer-section h3 {
+  font-size: 1.2em;
+  margin-bottom: 10px;
+}
+
+.footer-section p {
+  font-size: 0.9em;
+  line-height: 1.6;
+}
+
+.footer-section ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.footer-section li {
+  margin-bottom: 10px;
+}
+
+.footer-section a {
+  color: #03fc9d;
+  text-decoration: none;
+}
+
+.footer-section a:hover {
+  text-decoration: underline;
+}
+
+.social-links {
+  margin-top: 20px;
+}
+
+.social-links a {
+  color: #03fc9d;
+  font-size: 1.5em;
+  margin-right: 15px;
+}
+
+.social-links a:hover {
+  color: #ffffff;
+}
+
+.footer-note {
+  text-align: center;
+  margin-top: 30px;
+  font-size: 0.8em;
+  color: #aaaaaa;
+  border-top: 1px solid #333333;
+  padding-top: 20px;
+}
+
+
+
+
